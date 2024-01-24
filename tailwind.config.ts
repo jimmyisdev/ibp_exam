@@ -13,6 +13,23 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      height: {
+        card: '680px'
+      },
+      width: {
+        card: '400px'
+      },
+      fontSize: {
+        headerMain: '46px',
+        headerSub: '30px',
+      },
+      colors: {
+        "customized-blue-1": "#004CFF",
+        "customized-blue-2": "#F2F6FA",
+        "customized-red": "#FF1B1B",
+        "customized-gray-1": "#00000029",
+        "customized-gray-2": "#929292"
+      }
     },
   },
   plugins: [],
