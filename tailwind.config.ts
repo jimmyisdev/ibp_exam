@@ -14,14 +14,17 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       height: {
-        card: '680px'
+        card: '681.61px'
       },
       width: {
-        card: '400px'
+        card: '398px',
+        "card-mobile": '310px'
       },
       fontSize: {
         headerMain: '46px',
         headerSub: '30px',
+        "headerMain-mobile": '23px',
+        "headerSub-mobile": '15px',
       },
       colors: {
         "customized-blue-1": "#004CFF",
