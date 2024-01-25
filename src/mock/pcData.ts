@@ -79,7 +79,7 @@ export const pcData = [
     {
         id: 5,
         type: 'Prebuilt PC',
-        imgURL: 'RDYY60001',
+        imgURL: 'GamingRDYSLMRG211',
         name: "RDY Y60 023",
         info: [
             'Windows 11 Home',
@@ -114,13 +114,17 @@ export const pcData = [
     }, {
         id: 7,
         type: 'Prebuilt PC',
-        imgURL: 'RDYY60001',
+        imgURL: 'GamingRDYSLMRG211',
         name: "RDY Y60 002",
         info: [
             'Windows 11 Home',
             'Intel® Core™ i9-13900KF CPU',
             '32GB DDR5-6000MHz RGB RAM',
             'GeForce RTX 4070 Ti - 12GB',
+            'other request',
+            'other request',
+            'other request',
+            'other request',
         ],
         discountInfo: {
             originalPrice: '2499',
