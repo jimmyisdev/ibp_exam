@@ -1,19 +1,27 @@
 "use client"
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useTransition } from "react";
 import { pcData } from "@/mock/pcData";
 import { pcDataType } from "@/type/pcData";
 import Card from "@/components/Card/Card";
 import Button from "@/components/Button/Button";
 
 export default function Home() {
+  const [isPending, startTransition] = useTransition()
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsToShow, setItemsToShow] = useState(4);
+  const [currentList, setCurrentList] = useState<pcDataType[]>([])
   const showPrevious = useCallback(() => {
     setCurrentIndex((prevIndex) => Math.max(prevIndex - 1, 0));
   }, [currentIndex])
   const showNext = useCallback(() => {
     setCurrentIndex((prevIndex) => Math.min(prevIndex + 1, pcData.length - itemsToShow));
   }, [currentIndex, itemsToShow])
+  const updateCurrentList = useCallback(() => {
+    startTransition(() => {
+      let updatedVal = pcData.slice(currentIndex, currentIndex + itemsToShow)
+      setCurrentList(updatedVal)
+    })
+  }, [currentIndex, itemsToShow]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -29,28 +37,34 @@ export default function Home() {
         }
       }
       setItemsToShow(amountToShow);
-
+      updateCurrentList()
     };
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [updateCurrentList]);
+
+  useEffect(() => {
+    updateCurrentList()
+  }, [currentIndex, itemsToShow, updateCurrentList])
 
   return (
-    <main className="flex min-h-screen w-full flex-col items-center justify-between ">
+    <main className="flex min-h-screen w-full flex-col items-center">
       {pcData.length > 4 &&
         <div className="w-full p-2 flex flex-row justify-end">
           <Button name={`<`} action={showPrevious} />
           <Button name={`>`} action={showNext} />
         </div>}
-      <div className="flex overflow-hidden justify-between">
-        {pcData.slice(currentIndex, currentIndex + itemsToShow).map((item: pcDataType) => {
+      <div className="flex justify-between">
+        {isPending && <span>Loading...</span>}
+        {!isPending && !currentList.length && <span>No data available.</span>}
+        {!isPending && !!currentList.length && currentList.map((item: pcDataType) => {
           return (
             <div
               key={item.id}
-              className="w-full md:w-1/4 transition-transform duration-300 transform translate-x-0"
+              className={`w-full md:flex-1`}
             >
               <Card data={item} />
             </div>
