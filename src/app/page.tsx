@@ -57,7 +57,7 @@ export default function Home() {
           <Button name={`<`} action={showPrevious} />
           <Button name={`>`} action={showNext} />
         </div>}
-      <div className="flex justify-between">
+      <div className="flex justify-between p-4">
         {isPending && <span>Loading...</span>}
         {!isPending && !currentList.length && <span>No data available.</span>}
         {!isPending && !!currentList.length && currentList.map((item: pcDataType) => {

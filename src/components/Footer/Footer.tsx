@@ -1,11 +1,22 @@
-import React from 'react'
+import Image from 'next/image'
+import SNS_sect from './SNS_sect/SNS_sect';
+import Menu_sect from './Menu_sect/Menu_sect';
 
 export default function Footer() {
     return (
-        <div className='flex justify-center items-center p-4'>
-            <span>
-                Built with Next14, TypeScript & Tailwind
-            </span>
+        <div className='bg-customized-blue-2 flex  items-start p-8 flex-col md:flex-row'>
+            <Menu_sect />
+            <div className='flex flex-col '>
+                <SNS_sect />
+                <span className=' text-base mt-4'>Contact Us: 888-000-0000</span>
+                <span className=' text-base  mt-4'>Get gaming news and iBUYPOWER promotions and offers!</span>
+                <div className='flex flex-row  mt-4 items-center'             >
+                    <span className='font-bold text-base mr-2'>Family Brand</span>
+                    <a href="https://hyte.com/">
+                        <Image src={`/icon-hyte.svg`} alt='Hyte icon' width={50} height={50} priority={false} />
+                    </a>
+                </div>
+            </div>
         </div>
     )
 }
