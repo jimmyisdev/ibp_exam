@@ -133,5 +133,4 @@ export const pcData = [
             deliveryDate: 'Thursday, Jan 25'
         }
     }
-
 ]
