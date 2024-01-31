@@ -9,7 +9,7 @@ export default function Footer() {
             <About_sect />
             <div className=' flex items-start flex-col md:flex-row'>
                 <Menu_sect />
-                <div className='flex flex-col m-4'>
+                <div className='flex flex-col m-4 items-center'>
                     <SNS_sect />
                     <span className=' text-base mt-4'>Contact Us: 888-000-0000</span>
                     <span className=' text-base  mt-4'>Get gaming news and iBUYPOWER promotions and offers!</span>
