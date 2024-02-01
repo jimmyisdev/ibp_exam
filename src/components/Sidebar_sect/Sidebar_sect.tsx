@@ -1,11 +1,22 @@
 "use client"
 import { useStateContext } from '@/context';
-import React, { useEffect, useState } from 'react'
-import Cart_item from './Cart_tsx/Cart_item';
-
+import Cart_item from './Cart_item.tsx/Cart_item';
+import { useEffect, useState } from 'react';
 
 export default function Sidebar_sect() {
-    const { buyList, setBuyList, showSidebar, setShowSidebar } = useStateContext();
+    const { buyList, showSidebar, setShowSidebar } = useStateContext();
+    const [totalPrice, setTotalPrice] = useState(0)
+    function handleTotalPrice() {
+        let currentTotalPrice = buyList.reduce((total, item) => {
+            let itemTotal = Number(item.amount) * Number(item.discountInfo.discountPrice)
+            return total + itemTotal
+        }, 0)
+        setTotalPrice(currentTotalPrice)
+    }
+    useEffect(() => {
+        handleTotalPrice()
+    }, [buyList.length])
+
     return (
         <div className='absolute top-20 right-0 bg-white w-64 h-screen z-50 border-l-2  p-4'>
             <div className=' text-center mb-4'>
@@ -17,11 +28,14 @@ export default function Sidebar_sect() {
                 {buyList.length !== 0 &&
                     buyList.map(item => {
                         return (
-                            <Cart_item data={item} key={item.name} />)
+                            <Cart_item data={item} key={item.name} calcTotal={handleTotalPrice} />)
                     })
 
                 }
             </ul>
+            {!!totalPrice && <div className='flex flex-col justify-center items-center m-4'>
+                <span className='text-xl'>${totalPrice}</span>
+            </div>}
             <div className='flex flex-col justify-center items-center m-4'>
                 <button className='text-xl'>Confirm</button>
             </div>

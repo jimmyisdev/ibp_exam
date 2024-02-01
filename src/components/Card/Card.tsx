@@ -15,7 +15,7 @@ function Card({ data }: { data: pcDataType }) {
     function handleBuyBtn() {
         setIsBought(true)
         if (!isBouthtItem) {
-            setBuyList([...buyList, data])
+            setBuyList([...buyList, { ...data, amount: 1 }])
         }
     }
     useEffect(() => {

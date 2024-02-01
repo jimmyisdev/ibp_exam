@@ -4,8 +4,11 @@ import { pcData } from "@/mock/pcData";
 import { pcDataType } from "@/type/pcData";
 import Card from "@/components/Card/Card";
 import Button from "@/components/Button/Button";
+import Search_sect from "@/components/Search_sect/Search_sect";
+import { useStateContext } from "@/context";
 
 export default function Home() {
+  const { showSearch } = useStateContext();
   const [isPending, startTransition] = useTransition()
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsToShow, setItemsToShow] = useState(4);
@@ -52,6 +55,7 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen w-full flex-col items-center pt-20">
+      {showSearch && <Search_sect />}
       {pcData.length > 4 &&
         <div className="w-full p-2 flex flex-row ">
           <Button name={`<`} action={showPrevious} />

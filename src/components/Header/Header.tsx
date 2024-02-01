@@ -1,9 +1,7 @@
 "use client"
-import { useState } from "react";
 import { CiSearch, CiUser, CiShoppingCart } from "react-icons/ci";
-import Search_sect from "./Search_sect/Search_sect";
 import { useStateContext } from "@/context";
-import Sidebar_sect from "./Sidebar_sect/Sidebar_sect";
+import Sidebar_sect from "../Sidebar_sect/Sidebar_sect";
 
 export default function Header() {
     const { showSearch, setShowSearch, showSidebar, setShowSidebar } = useStateContext();
@@ -20,7 +18,6 @@ export default function Header() {
                     <button className="m-2" onClick={() => setShowSearch(!showSearch)}><CiSearch size={30} className={`${showSearch && "text-customized-red"}`} /></button>
                 </div>
             </div>
-            {showSearch && <Search_sect />}
             {showSidebar && <Sidebar_sect />}
         </div>
     )
