@@ -32,7 +32,6 @@ export default function Home() {
       const screenWidth = window.innerWidth;
       let amountToShow = 4;
       if (screenWidth < 768) {
-        console.log('48', screenWidth)
         amountToShow = 1;
       } else {
         if (typedList.length <= 4) {

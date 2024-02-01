@@ -31,16 +31,12 @@ const StateContextProvider = ({ children }: { children: React.ReactNode }) => {
         let newList: pcDataType[] = []
         if (type === "prebuilt") {
             newList = pcData.filter((item) => item.type.toLowerCase().includes("prebuilt") === true)
-            console.log("prebuilt")
             setTypedList(newList)
-
         } else if (type === "custom") {
             newList = pcData.filter((item) => item.type.toLowerCase().includes("custom") === true)
-            console.log("custom", newList)
             setTypedList(newList)
 
         } else if (type === "all") {
-            console.log("else")
             setTypedList(pcData)
         } else return
     }
