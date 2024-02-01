@@ -12,13 +12,7 @@ export default function Footer() {
                 <div className='flex flex-col m-4 items-center'>
                     <SNS_sect />
                     <span className=' text-base mt-4'>Contact Us: 888-000-0000</span>
-                    <span className=' text-base  mt-4'>Get gaming news and iBUYPOWER promotions and offers!</span>
-                    <div className='flex flex-row  mt-4 items-center'>
-                        <span className='font-bold text-base mr-2'>Family Brand</span>
-                        <a href="https://hyte.com/">
-                            <Image src={`/icon-hyte.svg`} alt='Hyte icon' width={50} height={50} priority={false} />
-                        </a>
-                    </div>
+                    <span className=' text-base  mt-4'>Get gaming news and IBP promotions and offers!</span>
                 </div>
             </div>
         </div>
