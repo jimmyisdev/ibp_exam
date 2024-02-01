@@ -51,7 +51,7 @@ export default function Home() {
   }, [currentIndex, itemsToShow, updateCurrentList])
 
   return (
-    <main className="flex min-h-screen w-full flex-col items-center">
+    <main className="flex min-h-screen w-full flex-col items-center pt-8">
       {pcData.length > 4 &&
         <div className="w-full p-2 flex flex-row justify-end">
           <Button name={`<`} action={showPrevious} />

@@ -121,10 +121,6 @@ export const pcData = [
             'Intel® Core™ i9-13900KF CPU',
             '32GB DDR5-6000MHz RGB RAM',
             'GeForce RTX 4070 Ti - 12GB',
-            'other request',
-            'other request',
-            'other request',
-            'other request',
         ],
         discountInfo: {
             originalPrice: '2499',
@@ -132,5 +128,44 @@ export const pcData = [
             monthlyPrice: '107',
             deliveryDate: 'Thursday, Jan 25'
         }
-    }
+    },
+
+    {
+        id: 8,
+        type: 'Custom PC',
+        imgURL: 'AMDThreadripperProUltimateWorkstation',
+        name: "AMD Threadripper Pro Ultimate Workstation",
+        info: [
+            'Windows 11 Pro',
+            'AMD RyzenTM Threadripper PRO 5995WX CPU',
+            'NVIDIA Quadro RTX A6000 - 48GB',
+            '4TB M.2 NVMe GEN4 SSD',
+            '128GB DDR5-6400MHz ECC RAM'
+        ],
+        discountInfo: {
+            originalPrice: '7999',
+            discountPrice: '7499',
+            monthlyPrice: '362.45',
+            deliveryDate: 'Monday, Aug 14'
+        }
+    },
+    {
+        id: 9,
+        type: 'Prebuilt PC',
+        imgURL: 'GamingRDYSLMRG211',
+        name: "Gaming RDY Z50BG401",
+        info: [
+            'Windows 11 Home',
+            'Intel® Core™ i7-12700KF CPU',
+            'GeForce RTX 4080 - 16GB',
+            '2TB M.2 NVMe GEN4 SSD',
+            '64GB DDR5-5800MHz RGB RAM'
+        ],
+        discountInfo: {
+            originalPrice: '2799',
+            discountPrice: '2499',
+            monthlyPrice: '121.66',
+            deliveryDate: 'Saturday, Sep 22'
+        }
+    },
 ]

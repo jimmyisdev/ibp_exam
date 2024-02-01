@@ -21,10 +21,10 @@ const config: Config = {
         "card-mobile": '310px'
       },
       fontSize: {
-        headerMain: '36px',
-        headerSub: '28px',
-        "headerMain-mobile": '18px',
-        "headerSub-mobile": '14px',
+        headerMain: '34px',
+        headerSub: '26px',
+        "headerMain-mobile": '17px',
+        "headerSub-mobile": '13px',
       },
       colors: {
         "customized-blue-1": "#004CFF",
