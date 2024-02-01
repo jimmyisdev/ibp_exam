@@ -1,10 +1,11 @@
 "use client"
+import { pcDataType } from '@/type/pcData';
 import React, { createContext, useState } from 'react';
 
 
 interface stateContextValue {
-    buyList: string[];
-    setBuyList: React.Dispatch<React.SetStateAction<string[]>>,
+    buyList: pcDataType[];
+    setBuyList: React.Dispatch<React.SetStateAction<pcDataType[]>>,
     searchVal: string;
     setSearchVal: React.Dispatch<React.SetStateAction<string>>,
     showSearch: boolean;
@@ -15,7 +16,7 @@ interface stateContextValue {
 const StateContext = createContext<stateContextValue | undefined>(undefined);
 
 const StateContextProvider = ({ children }: { children: React.ReactNode }) => {
-    const [buyList, setBuyList] = useState<string[]>([])
+    const [buyList, setBuyList] = useState<pcDataType[]>([])
     const [searchVal, setSearchVal] = useState<string>('')
     const [showSearch, setShowSearch] = useState(false)
     const [showSidebar, setShowSidebar] = useState(false)
@@ -27,9 +28,7 @@ const StateContextProvider = ({ children }: { children: React.ReactNode }) => {
                 searchVal, setSearchVal,
                 showSearch, setShowSearch,
                 showSidebar, setShowSidebar
-
-            }
-            }
+            }}
         >
             {children}
         </StateContext.Provider>
