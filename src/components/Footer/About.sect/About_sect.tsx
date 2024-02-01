@@ -5,7 +5,7 @@ import { FaMinus, FaPlus } from "react-icons/fa6";
 export default function About_sect() {
     const [isShow, setIsShow] = useState(false)
     return (
-        <div className='flex flex-col justify-between mb-8'>
+        <div className='flex flex-col justify-between mb-8 max-2/3'>
             <h1 className='text-xl mb-4 font-bold'>ABOUT IBP GEAR STORE</h1>
             <span className='text-base  mb-4'>Frequently Asked Questions</span>
             <span className='text-base  mb-4'>What equipment do you need to be a gamer?</span>

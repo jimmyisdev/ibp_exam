@@ -5,9 +5,9 @@ import About_sect from './About.sect/About_sect';
 
 export default function Footer() {
     return (
-        <div className='bg-customized-blue-2 p-8 '>
+        <div className='bg-customized-blue-2 p-6'>
             <About_sect />
-            <div className=' flex items-center md:items-start flex-col md:flex-row md:flex-wrap'>
+            <div className=' flex items-center lg:items-start flex-col lg:flex-row'>
                 <Menu_sect />
                 <div className='flex flex-col m-4 items-center'>
                     <SNS_sect />
