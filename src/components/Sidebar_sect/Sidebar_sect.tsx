@@ -37,9 +37,26 @@ export default function Sidebar_sect() {
             {!!totalPrice && <div className='flex flex-col justify-center items-center m-4'>
                 <span className='text-xl'>${totalPrice}</span>
             </div>}
+            {!!totalPrice &&
+                <fieldset className='flex flex-col justify-center  m-4'>
+                    <legend className='mb-2 text-xl font-bold text-center'>Payment</legend>
+                    <div className='mb-2 flex flex-row items-center'>
+                        <input className='mr-2' type="radio" id="visa" name="payment" value="visa" checked />
+                        <label htmlFor="visa">Visa</label>
+                    </div>
+                    <div className='mb-2 flex flex-row items-center'>
+                        <input className='mr-2' type="radio" id="master" name="payment" value="master" checked />
+                        <label htmlFor="master">Master</label>
+                    </div>
+                    <div className='mb-2 flex flex-row items-center'>
+                        <input className='mr-2' type="radio" id="paypal" name="payment" value="paypal" checked />
+                        <label htmlFor="paypal">PayPal</label>
+                    </div>
+                </fieldset >
+            }
             <div className='flex flex-col justify-center items-center m-4'>
                 <Button name='Confirm' />
             </div>
-        </div>
+        </div >
     )
 }
