@@ -14,7 +14,7 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       height: {
-        card: '681.61px'
+        card: '660px'
       },
       width: {
         card: '398px',

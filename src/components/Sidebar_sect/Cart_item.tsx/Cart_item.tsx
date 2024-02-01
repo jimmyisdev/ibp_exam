@@ -1,7 +1,7 @@
 "use client"
 import { MdDeleteForever } from "react-icons/md";
 import { FaMinus, FaPlus } from "react-icons/fa";
-import React, { memo, useEffect, useState } from 'react'
+import React, { memo, useEffect } from 'react'
 import { useStateContext } from "@/context";
 import { BuyListItemType } from "@/type/BuyListItem";
 
@@ -53,9 +53,9 @@ function Cart_item({ data, calcTotal }: { data: BuyListItemType, calcTotal: () =
                 <span className='ml-2'>${discountInfo.discountPrice}</span>
             </div>
             <div className='mt-2 w-full flex flex-row justify-around mb-2'>
-                <button onClick={() => handleAmountBtn("plus", id)}><FaPlus size={15} /></button>
-                <button onClick={() => handleAmountBtn("minus", id)}><FaMinus size={15} /></button>
-                <button onClick={() => handleDeleteBtn(data.id)}><MdDeleteForever size={20} /></button>
+                <button onClick={() => handleAmountBtn("plus", id)}><FaPlus size={13} /></button>
+                <button onClick={() => handleAmountBtn("minus", id)}><FaMinus size={13} /></button>
+                <button onClick={() => handleDeleteBtn(data.id)}><MdDeleteForever size={13} /></button>
             </div>
         </li>)
 }

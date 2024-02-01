@@ -19,12 +19,12 @@ export default function Sidebar_sect() {
     }, [buyList.length])
 
     return (
-        <div className='absolute top-20 right-0 bg-customized-blue-2 w-64 h-screen z-18 border-l-2  p-4'>
+        <div className='absolute top-20 right-0 bg-customized-blue-2 w-64 h-screen   z-18 border-l-2  p-4'>
             <div className=' text-center mb-4'>
                 <h1 className='text-xl font-bold'>Buy List</h1>
                 <button className='absolute top-6 right-4' onClick={() => setShowSidebar(!showSidebar)}>X</button>
             </div>
-            <ul>
+            <ul className='h-1/2 overflow-scroll'>
                 {buyList.length === 0 && <li className='text-center'>Your list is empty</li>}
                 {buyList.length !== 0 &&
                     buyList.map(item => {

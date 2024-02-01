@@ -1,14 +1,12 @@
 "use client"
 import { useCallback, useEffect, useState, useTransition } from "react";
-import { pcData } from "@/mock/pcData";
 import { pcDataType } from "@/type/pcData";
 import Card from "@/components/Card/Card";
 import Button from "@/components/Button/Button";
-import Search_sect from "@/components/Search_sect/Search_sect";
 import { useStateContext } from "@/context";
 
 export default function Home() {
-  const { showSearch } = useStateContext();
+  const { typedList, handleSelectType } = useStateContext();
   const [isPending, startTransition] = useTransition()
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsToShow, setItemsToShow] = useState(4);
@@ -17,14 +15,21 @@ export default function Home() {
     setCurrentIndex((prevIndex) => Math.max(prevIndex - 1, 0));
   }, [currentIndex])
   const showNext = useCallback(() => {
-    setCurrentIndex((prevIndex) => Math.min(prevIndex + 1, pcData.length - itemsToShow));
-  }, [currentIndex, itemsToShow])
+    setCurrentIndex((prevIndex) => Math.min(prevIndex + 1, typedList.length - itemsToShow));
+  }, [currentIndex, itemsToShow, typedList.length])
   const updateCurrentList = useCallback(() => {
     startTransition(() => {
-      let updatedVal = pcData.slice(currentIndex, currentIndex + itemsToShow)
-      setCurrentList(updatedVal)
+      if (typedList.length <= 4) {
+        setCurrentList(typedList)
+      } else {
+        let updatedVal = typedList.slice(currentIndex, currentIndex + itemsToShow)
+        if (updatedVal.length === 0) {
+          updatedVal = typedList.slice(typedList.length - itemsToShow, currentIndex + itemsToShow)
+        }
+        setCurrentList(updatedVal)
+      }
     })
-  }, [currentIndex, itemsToShow]);
+  }, [currentIndex, itemsToShow, typedList.length]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -33,8 +38,8 @@ export default function Home() {
       if (screenWidth < 768) {
         amountToShow = 1;
       } else {
-        if (pcData.length <= 4) {
-          amountToShow = pcData.length;
+        if (typedList.length <= 4) {
+          amountToShow = typedList.length;
         } else {
           amountToShow = Math.min(4, Math.floor(screenWidth / 420));
         }
@@ -47,21 +52,26 @@ export default function Home() {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [updateCurrentList]);
+  }, [updateCurrentList, typedList.length]);
 
   useEffect(() => {
     updateCurrentList()
-  }, [currentIndex, itemsToShow, updateCurrentList])
+  }, [currentIndex, itemsToShow, updateCurrentList, typedList.length])
 
   return (
     <main className="flex min-h-screen w-full flex-col items-center pt-20">
-      {showSearch && <Search_sect />}
-      {pcData.length > 4 &&
-        <div className="w-full p-2 flex flex-row ">
-          <Button name={`<`} action={showPrevious} />
-          <Button name={`>`} action={showNext} />
-        </div>}
-      <div className="flex justify-between p-4">
+      <div className="fixed top-32 left-0 p-2 flex flex-col ">
+        {typedList.length > 4 &&
+          <div className="flex flex-row">
+            <Button name={`<`} action={showPrevious} />
+            <Button name={`>`} action={showNext} />
+          </div>
+        }
+        <Button name="All" action={() => handleSelectType("all")} />
+        <Button name="Prebuilt" action={() => handleSelectType("prebuilt")} />
+        <Button name="Custom" action={() => handleSelectType("custom")} />
+      </div>
+      <div className="flex justify-between pb-8 pt-16 ">
         {isPending && <span>Loading...</span>}
         {!isPending && !currentList.length && <span>No data available.</span>}
         {!isPending && !!currentList.length && currentList.map((item: pcDataType) => {
