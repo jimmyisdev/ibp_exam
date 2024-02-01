@@ -1,8 +1,23 @@
+"use client"
 import { useStateContext } from '@/context';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import Cart_item from './Cart_tsx/Cart_item';
+
 
 export default function Sidebar_sect() {
     const { buyList, setBuyList, showSidebar, setShowSidebar } = useStateContext();
+    // useEffect(() => {
+    //     function calcTotal() {
+    //         const sumWithInitial = buyList.reduce(
+    //             (accumulator, currentValue) => accumulator + currentValue,
+    //             0,
+    //         );
+    //     }
+    //     calcTotal()
+
+    // }, [buyList.length])
+
+
 
     return (
         <div className='absolute top-20 right-0 bg-white w-64 h-screen z-50 border-l-2  p-4'>
@@ -15,11 +30,7 @@ export default function Sidebar_sect() {
                 {buyList.length !== 0 &&
                     buyList.map(item => {
                         return (
-                            <li key={item.id} className='pb-4 flex flex-col'>
-                                <span className='font-bold'>{item.name} </span>
-                                <span className='ml-2'>${item.discountInfo.discountPrice} </span>
-                            </li>
-                        )
+                            <Cart_item data={item} key={item.name} />)
                     })
 
                 }

@@ -1,5 +1,5 @@
 "use client"
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { pcDataType } from '@/type/pcData'
 import { useStateContext } from '@/context';
@@ -15,6 +15,13 @@ function Card({ data }: { data: pcDataType }) {
         setIsBought(true)
         setBuyList([...buyList, data])
     }
+    useEffect(() => {
+        const isBouthtItem = Boolean(buyList.find((element) => element.name === name))
+        if (!isBouthtItem) {
+            setIsBought(false)
+        }
+    }, [buyList.length])
+
     return (
         <div className='h-card w-card-mobile md:w-card shadow flex flex-col justify-between  mx-2'>
             <div className='p-4 '>
