@@ -13,7 +13,6 @@ export default function Header() {
                     <span className="font-bold text-headerSub-mobile  md:text-headerSub">Prebuilt & Custom</span>
                 </div>
                 <div className="absolute right-4 top-4">
-                    <button className="m-2"><CiUser size={30} /></button>
                     <button className="m-2" onClick={() => setShowSidebar(!showSidebar)}><CiShoppingCart size={30} /></button>
                     <button className="m-2" onClick={() => setShowSearch(!showSearch)}><CiSearch size={30} className={`${showSearch && "text-customized-red"}`} /></button>
                 </div>

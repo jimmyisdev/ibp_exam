@@ -1,6 +1,6 @@
 import { memo, useCallback } from "react"
 
-function Button({ name = "Click", action }: { name?: string, action: () => void }) {
+function Button({ name = "Click", action = () => { } }: { name?: string, action?: () => void }) {
     const handleClick = useCallback(() => {
         action();
     }, [action]);

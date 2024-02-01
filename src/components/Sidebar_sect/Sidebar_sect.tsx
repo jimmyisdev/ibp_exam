@@ -2,6 +2,7 @@
 import { useStateContext } from '@/context';
 import Cart_item from './Cart_item.tsx/Cart_item';
 import { useEffect, useState } from 'react';
+import Button from '../Button/Button';
 
 export default function Sidebar_sect() {
     const { buyList, showSidebar, setShowSidebar } = useStateContext();
@@ -37,7 +38,7 @@ export default function Sidebar_sect() {
                 <span className='text-xl'>${totalPrice}</span>
             </div>}
             <div className='flex flex-col justify-center items-center m-4'>
-                <button className='text-xl'>Confirm</button>
+                <Button name='Confirm' />
             </div>
         </div>
     )
