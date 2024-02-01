@@ -114,7 +114,7 @@ export const pcData = [
     }, {
         id: 7,
         type: 'Prebuilt PC',
-        imgURL: 'GamingRDYSLMRG211',
+        imgURL: 'Intel13thGenPerformanceDailyDeal',
         name: "RDY Y60 002",
         info: [
             'Windows 11 Home',
@@ -133,7 +133,7 @@ export const pcData = [
     {
         id: 8,
         type: 'Custom PC',
-        imgURL: 'AMDThreadripperProUltimateWorkstation',
+        imgURL: 'Intel13thGenPerformanceDailyDeal',
         name: "AMD Threadripper Pro Ultimate Workstation",
         info: [
             'Windows 11 Pro',
@@ -152,7 +152,7 @@ export const pcData = [
     {
         id: 9,
         type: 'Prebuilt PC',
-        imgURL: 'GamingRDYSLMRG211',
+        imgURL: 'Intel13thGenPerformanceDailyDeal',
         name: "Gaming RDY Z50BG401",
         info: [
             'Windows 11 Home',

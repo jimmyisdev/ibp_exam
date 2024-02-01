@@ -13,7 +13,9 @@ function Card({ data }: { data: pcDataType }) {
     const [isBought, setIsBought] = useState(false)
     function handleBuyBtn() {
         setIsBought(true)
-        setBuyList([...buyList, data])
+        if (buyList.find(item => item.name !== name)) {
+            setBuyList([...buyList, data])
+        }
     }
     useEffect(() => {
         const isBouthtItem = Boolean(buyList.find((element) => element.name === name))
@@ -52,15 +54,13 @@ function Card({ data }: { data: pcDataType }) {
                     <span className='font-bold text-sm'>Free Shipping</span>
                     <span className='text-sm'>{type === "Prebuilt PC" ? "Delivery By " : "Estimate Ship By "}{deliveryDate}</span>
                 </div>
-                {!isBought &&
-                    <button
-                        onClick={handleBuyBtn}
-                        disabled={isBought}
-                        className={`absolute right-2 bottom-6 px-1 py-1 text-base text-customized-red border-customized-red rounded-2xl 
+                <button
+                    onClick={handleBuyBtn}
+                    disabled={isBought}
+                    className={`absolute right-2 bottom-6 px-1 py-1 text-base text-customized-red border-customized-red rounded-2xl 
                         md:right-4 md:px-2 md:py-2 border-2
                         hover:text-white hover:bg-customized-red` }
-                    >{type === "Prebuilt PC" ? "Buy Now" : "Customize"}</button>
-                }
+                >{type === "Prebuilt PC" ? "Buy Now" : "Customize"}</button>
             </div>
         </div>
     )

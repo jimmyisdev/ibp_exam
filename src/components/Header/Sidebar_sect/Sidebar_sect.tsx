@@ -6,19 +6,6 @@ import Cart_item from './Cart_tsx/Cart_item';
 
 export default function Sidebar_sect() {
     const { buyList, setBuyList, showSidebar, setShowSidebar } = useStateContext();
-    // useEffect(() => {
-    //     function calcTotal() {
-    //         const sumWithInitial = buyList.reduce(
-    //             (accumulator, currentValue) => accumulator + currentValue,
-    //             0,
-    //         );
-    //     }
-    //     calcTotal()
-
-    // }, [buyList.length])
-
-
-
     return (
         <div className='absolute top-20 right-0 bg-white w-64 h-screen z-50 border-l-2  p-4'>
             <div className=' text-center mb-4'>
