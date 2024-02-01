@@ -7,7 +7,7 @@ export default function Footer() {
     return (
         <div className='bg-customized-blue-2 p-8 '>
             <About_sect />
-            <div className=' flex items-center md:items-start flex-col md:flex-row'>
+            <div className=' flex items-center md:items-start flex-col md:flex-row md:flex-wrap'>
                 <Menu_sect />
                 <div className='flex flex-col m-4 items-center'>
                     <SNS_sect />

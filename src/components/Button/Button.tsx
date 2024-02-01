@@ -1,6 +1,6 @@
 import { memo, useCallback } from "react"
 
-function Button({ name = "Click", action = (...args: any[]) => { } }: { name?: string, action?: (...args: any[]) => void }) {
+function Button({ name = "Click", size = "", action = (...args: any[]) => { } }: { name?: string, size?: string, action?: (...args: any[]) => void }) {
     const handleClick = useCallback(() => {
         action();
     }, [action]);
@@ -8,14 +8,14 @@ function Button({ name = "Click", action = (...args: any[]) => { } }: { name?: s
 
         <button
             className={`
-            text-black px-4 py-2  shadow-md rounded
+            text-black px-2 py-2  shadow-md rounded
             bg-white
             transition  ease-in-out
             hover:transition-all
             hover:text-white hover:bg-customized-gray-1 
             duration-300
-            m-2
-
+            m-1
+            ${size === "half" ? "w-8" : "w-16"}
          `}
             onClick={handleClick}
         >

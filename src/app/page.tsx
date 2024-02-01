@@ -11,23 +11,19 @@ export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsToShow, setItemsToShow] = useState(4);
   const [currentList, setCurrentList] = useState<pcDataType[]>([])
-  const showPrevious = useCallback(() => {
+  const showPrevious = () => {
     setCurrentIndex((prevIndex) => Math.max(prevIndex - 1, 0));
-  }, [currentIndex])
-  const showNext = useCallback(() => {
+  }
+  const showNext = () => {
     setCurrentIndex((prevIndex) => Math.min(prevIndex + 1, typedList.length - itemsToShow));
-  }, [currentIndex, itemsToShow, typedList.length])
+  }
   const updateCurrentList = useCallback(() => {
     startTransition(() => {
-      if (typedList.length <= 4) {
-        setCurrentList(typedList)
-      } else {
-        let updatedVal = typedList.slice(currentIndex, currentIndex + itemsToShow)
-        if (updatedVal.length === 0) {
-          updatedVal = typedList.slice(typedList.length - itemsToShow, currentIndex + itemsToShow)
-        }
-        setCurrentList(updatedVal)
+      let updatedVal = typedList.slice(currentIndex, currentIndex + itemsToShow)
+      if (updatedVal.length === 0) {
+        updatedVal = typedList.slice(typedList.length - itemsToShow, currentIndex + itemsToShow)
       }
+      setCurrentList(updatedVal)
     })
   }, [currentIndex, itemsToShow, typedList.length]);
 
@@ -36,12 +32,13 @@ export default function Home() {
       const screenWidth = window.innerWidth;
       let amountToShow = 4;
       if (screenWidth < 768) {
+        console.log('48', screenWidth)
         amountToShow = 1;
       } else {
         if (typedList.length <= 4) {
           amountToShow = typedList.length;
         } else {
-          amountToShow = Math.min(4, Math.floor(screenWidth / 420));
+          amountToShow = Math.min(4, Math.floor(screenWidth / 450));
         }
       }
       setItemsToShow(amountToShow);
@@ -61,10 +58,10 @@ export default function Home() {
   return (
     <main className="flex min-h-screen w-full flex-col items-center pt-20">
       <div className="fixed top-32 left-0 p-2 flex flex-col z-20 ">
-        {typedList.length > 4 &&
+        {typedList.length > itemsToShow &&
           <div className="flex flex-row">
-            <Button name={`<`} action={showPrevious} />
-            <Button name={`>`} action={showNext} />
+            <Button name={`<`} size="half" action={showPrevious} />
+            <Button name={`>`} size="half" action={showNext} />
           </div>
         }
 
