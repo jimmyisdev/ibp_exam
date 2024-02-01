@@ -7,18 +7,18 @@ import List from '../List/List';
 
 function Card({ data }: { data: pcDataType }) {
     const { buyList, setBuyList } = useStateContext();
-    const { type = "", name = "", info = [], imgURL = '', discountInfo } = data;
+    const { id, type = "", name = "", info = [], imgURL = '', discountInfo } = data;
     const { originalPrice = "", discountPrice = "", monthlyPrice = "", deliveryDate = "" } = discountInfo
     const deductedVal = Number(originalPrice) - Number(discountPrice);
+    const isBouthtItem = Boolean(buyList.find((element) => element.id === id))
     const [isBought, setIsBought] = useState(false)
     function handleBuyBtn() {
         setIsBought(true)
-        if (buyList.find(item => item.name !== name)) {
+        if (!isBouthtItem) {
             setBuyList([...buyList, data])
         }
     }
     useEffect(() => {
-        const isBouthtItem = Boolean(buyList.find((element) => element.name === name))
         if (!isBouthtItem) {
             setIsBought(false)
         }
