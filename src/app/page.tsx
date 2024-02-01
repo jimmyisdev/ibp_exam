@@ -60,13 +60,14 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen w-full flex-col items-center pt-20">
-      <div className="fixed top-32 left-0 p-2 flex flex-col ">
+      <div className="fixed top-32 left-0 p-2 flex flex-col z-20 ">
         {typedList.length > 4 &&
           <div className="flex flex-row">
             <Button name={`<`} action={showPrevious} />
             <Button name={`>`} action={showNext} />
           </div>
         }
+
         <Button name="All" action={() => handleSelectType("all")} />
         <Button name="Prebuilt" action={() => handleSelectType("prebuilt")} />
         <Button name="Custom" action={() => handleSelectType("custom")} />
