@@ -9,8 +9,8 @@ export default function Header() {
     const { showSearch, setShowSearch, showSidebar, setShowSidebar } = useStateContext();
     return (
         <div className="fixed w-full bg-white z-20 flex flex-col">
-            <div className=" text-center p-4  border-b-2 ">
-                <div className="md:items-center md:flex md:flex-row">
+            <div className=" md:text-center p-4  border-b-2 ">
+                <div className="items-center md:flex md:flex-row">
                     <h1 className="font-bold text-headerMain-mobile  md:text-headerMain md:mr-4">Best Seller Gaming PC</h1>
                     <span className="font-bold text-headerSub-mobile  md:text-headerSub">Prebuilt & Custom</span>
                 </div>
