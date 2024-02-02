@@ -35,11 +35,23 @@ const StateContextProvider = ({ children }: { children: React.ReactNode }) => {
         } else if (type === "custom") {
             newList = pcData.filter((item) => item.type.toLowerCase().includes("custom") === true)
             setTypedList(newList)
-
         } else if (type === "all") {
             setTypedList(pcData)
         } else return
     }
+
+    useEffect(() => {
+        if (searchVal.length >= 3) {
+            let newList: pcDataType[] = []
+            let currentSearch = searchVal.toLowerCase();
+            newList = typedList.filter(
+                ({ name }) => name.toLowerCase().indexOf(currentSearch) > -1
+            );
+            console.log(newList)
+            return setTypedList(newList)
+        }
+        return setTypedList(pcData)
+    }, [searchVal])
 
     useEffect(() => {
         handleSelectType('all')
